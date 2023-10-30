@@ -1,15 +1,12 @@
 <template>
   <div class="block__newContact">
-<div class="newContact">
-    <div class="blockAddContact">
-      <button class="addUser" @click="toggleForm">+</button>
+    <div class="newContact">
+      <div class="blockAddContact">
+        <button class="addUser" @click="toggleForm">+</button>
+      </div>
+      <div class="newContact"><span>Новий контакт</span></div>
     </div>
-    <div class="newContact"><span>Новий контакт</span></div>
-</div>
-      <form-new-contact
-        :isVisible="showForm"
-        @addNewContact="addContact"
-      />
+    <form-new-contact :isVisible="showForm" @addNewContact="$emit('addNewContact',$event)" />
   </div>
 </template>
 
@@ -27,9 +24,6 @@ export default {
     toggleForm() {
       this.showForm = !this.showForm;
     },
-    addContact(obj){
-      this.$emit('addNewContact',obj)
-    }
   },
 };
 </script>
@@ -39,7 +33,7 @@ export default {
   width: 90%;
   padding: 0px 0px 0px 10px;
 }
-.newContact{
+.newContact {
   color: green;
   font-weight: 600;
   display: flex;
@@ -51,7 +45,7 @@ export default {
   border-radius: 50%;
   border: 1px dashed green;
 }
-.blockAddContact:hover{
+.blockAddContact:hover {
   border: 1px dashed rgb(255, 255, 255);
 }
 .addUser {
@@ -62,7 +56,7 @@ export default {
   border: 0;
   background-color: white;
 }
-.addUser:hover{
+.addUser:hover {
   background-color: green;
   color: white;
 }
